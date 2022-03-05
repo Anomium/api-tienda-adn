@@ -1,4 +1,4 @@
-@Library('ceiba-jenkins-library@master') _
+@Library('ceiba-jenkins-library') _
 pipeline{
 	// any -> tomaria slave 5 u 8
 	// Para mobile se debe especificar el slave -> {label 'Slave_Mac'}
@@ -22,6 +22,8 @@ pipeline{
 
     tools {
         jdk 'JDK8_Centos
+    }
+
     // Parametros disponibles en jenkins
      /*parameters{
             string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
@@ -86,8 +88,8 @@ pipeline{
 		
 		stage('Static Code Analysis') {
 			steps{
-				sonarqubeMasQualityGates(sonarKey:'co.com.ceiba.tienda', 
-				sonarName:'co.com.ceiba.tienda:api-tienda', 
+				sonarqubeMasQualityGatesP(sonarKey:'co.com.ceiba.tienda:api.tienda-melvin.martinez', 
+				sonarName:'co.com.ceiba.tienda:api-tienda(melvin.martinez)', 
 				sonarPathProperties:'./sonar-project.properties')
 			}
 		}
