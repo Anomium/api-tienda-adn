@@ -38,14 +38,17 @@ pipeline {
     stage('Compile & Unit Tests') {
       steps{
         echo "------------>Compile & Unit Tests<------------"
-        sh 'chmod +x gradlew'
-        sh './gradlew --b ./build.gradle test'
+        sh 'chmod +x ./microservicio/gradlew'
+        sh './microservicio/gradlew --b ./microservicio/build.gradle clean'
+		sh './microservicio/gradlew --b ./microservicio/build.gradle test'
       }
     }
 
     stage('Static Code Analysis') {
       steps{
         echo '------------>Análisis de código estático<------------'
+        withSonarQubeEnv('Sonar') {
+        sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner -Dproject.settings=sonar-project.properties"
         sonarqubeMasQualityGatesP(sonarKey:'co.com.ceiba.adn:api.tienda.adn-melvin.matinez', 
         sonarName:'CeibaADN-ApiTiendaAdn(melvin.martinez)', 
         sonarPathProperties:'./sonar-project.properties')
