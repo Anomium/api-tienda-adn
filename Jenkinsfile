@@ -21,9 +21,7 @@ pipeline{
     }
 
     tools {
-        jdk 'JDK8'
-    }
-
+        jdk 'JDK8_Centos
     // Parametros disponibles en jenkins
      /*parameters{
             string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
