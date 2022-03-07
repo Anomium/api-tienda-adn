@@ -15,16 +15,16 @@ pipeline {
   tools {
     jdk 'JDK8_Centos' //Verisión preinstalada en la Configuración del Master
   }
-/*	Versiones disponibles
-      JDK8_Mac
-      JDK6_Centos
-      JDK7_Centos
-      JDK8_Centos
-      JDK10_Centos
-      JDK11_Centos
-      JDK13_Centos
-      JDK14_Centos
-*/
+    /*	Versiones disponibles
+        JDK8_Mac
+        JDK6_Centos
+        JDK7_Centos
+        JDK8_Centos
+        JDK10_Centos
+        JDK11_Centos
+        JDK13_Centos
+        JDK14_Centos
+    */
 
   //Aquí comienzan los “items” del Pipeline
   stages{
@@ -38,8 +38,9 @@ pipeline {
     stage('Compile & Unit Tests') {
       steps{
         echo "------------>Compile & Unit Tests<------------"
-        sh 'chmod +x ./microservicio/gradlew'
-		sh './microservicio/gradlew --b ./microservicio/build.gradle test'
+        sh 'chmod +x gradlew'
+        sh './gradlew --b ./build.gradle clean'
+		sh './gradlew --b ./build.gradle test'
       }
     }
 
@@ -47,7 +48,7 @@ pipeline {
       steps{
         echo '------------>Análisis de código estático<------------'
         sonarqubeMasQualityGatesP(
-        sonarKey:'co.com.ceiba.adn:api.tienda.adn.melvin.matinez', 
+        sonarKey:'co.com.ceiba.adn:api.tienda.adn-melvin.matinez', 
         sonarName:'"CeibaADN-ApiTiendaAdn(melvin.martinez)"', 
         sonarPathProperties:'./sonar-project.properties')
       }
