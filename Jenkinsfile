@@ -58,7 +58,7 @@ pipeline {
       steps {
         echo "------------>Build<------------"
         //Construir sin tarea test que se ejecutó previamente
-        sh './microservicio/gradlew --b ./microservicio/build.gradle build -x test'
+        sh './gradlew --b ./build.gradle build -x test'
       }
     }  
   }
@@ -69,7 +69,7 @@ pipeline {
     }
     success {
       echo 'This will run only if successful'
-      junit '**/test-results/test/*.xml'
+      junit 'build/test-results/test/*.xml'
     }
     failure {
       echo 'This will run only if failed'
