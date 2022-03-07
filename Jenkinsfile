@@ -48,7 +48,7 @@ pipeline {
       steps{
         echo '------------>Análisis de código estático<------------'
         sonarqubeMasQualityGatesP(
-        sonarKey:'co.com.ceiba.adn:api.tienda.adn-melvin.martinez', 
+        sonarKey:'co.com.ceiba.adn:api.tienda.adn.melvin.martinez', 
         sonarName:'"CeibaADN-ApiTiendaAdn(melvin.martinez)"', 
         sonarPathProperties:'./sonar-project.properties')
       }
@@ -58,7 +58,7 @@ pipeline {
       steps {
         echo "------------>Build<------------"
         //Construir sin tarea test que se ejecutó previamente
-        sh './gradlew --b ./build.gradle build -x test'
+        sh './microservicio/gradlew --b ./microservicio/build.gradle build -x test'
       }
     }  
   }
