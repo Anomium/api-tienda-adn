@@ -48,7 +48,7 @@ pipeline {
       steps{
         echo '------------>Análisis de código estático<------------'
         sonarqubeMasQualityGatesP(
-        sonarKey:'co.com.ceiba.adn:api.tienda.adn.melvin.martinez', 
+        sonarKey:'co.com.ceiba.adn:tienda.adn.melvin.martinez', 
         sonarName:'"CeibaADN-ApiTiendaAdn(melvin.martinez)"', 
         sonarPathProperties:'./sonar-project.properties')
       }
