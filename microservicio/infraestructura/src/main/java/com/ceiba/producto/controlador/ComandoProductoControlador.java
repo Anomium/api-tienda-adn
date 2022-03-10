@@ -19,15 +19,12 @@ public class ComandoProductoControlador {
 
     private final ManejadorRegistrarProducto manejadorRegistrarProducto;
     private final ManejadorEditarProducto manejadorEditarProducto;
-    private final ManejadorListarProductos manejadorListarProductos;
 
     @Autowired
     public ComandoProductoControlador(ManejadorRegistrarProducto manejadorRegistrarProducto,
-                                      ManejadorEditarProducto manejadorEditarProducto,
-                                      ManejadorListarProductos manejadorListarProductos) {
+                                      ManejadorEditarProducto manejadorEditarProducto) {
         this.manejadorRegistrarProducto = manejadorRegistrarProducto;
         this.manejadorEditarProducto = manejadorEditarProducto;
-        this.manejadorListarProductos = manejadorListarProductos;
     }
 
     @PostMapping
@@ -41,12 +38,6 @@ public class ComandoProductoControlador {
     public void editar(@RequestBody ComandoProducto comandoProducto, @PathVariable Long id) {
         comandoProducto.setId(id);
         this.manejadorEditarProducto.ejecutar(comandoProducto);
-    }
-
-    @GetMapping
-    @ApiOperation("Obtener todos los productos")
-    public List<DtoProducto> listarProdutos() {
-        return this.manejadorListarProductos.ejecutar();
     }
 
 }

@@ -1,4 +1,4 @@
-package com.ceiba.usuario.comando.fabrica;
+package com.ceiba.producto.comando.fabrica;
 
 import com.ceiba.producto.comando.ComandoProducto;
 import com.ceiba.producto.modelo.entidad.Producto;
