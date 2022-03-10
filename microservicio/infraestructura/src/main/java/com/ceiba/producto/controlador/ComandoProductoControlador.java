@@ -1,9 +1,9 @@
 package com.ceiba.producto.controlador;
 
-import com.ceiba.producto.ComandoProducto;
-import com.ceiba.producto.manejador.ManejadorEditarProducto;
-import com.ceiba.producto.manejador.ManejadorListarProductos;
-import com.ceiba.producto.manejador.ManejadorRegistrarProducto;
+import com.ceiba.producto.comando.ComandoProducto;
+import com.ceiba.producto.comando.manejador.ManejadorEditarProducto;
+import com.ceiba.producto.comando.manejador.ManejadorListarProductos;
+import com.ceiba.producto.comando.manejador.ManejadorRegistrarProducto;
 import com.ceiba.producto.modelo.dto.DtoProducto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -15,16 +15,16 @@ import java.util.List;
 @RestController
 @RequestMapping("/productos")
 @Api(tags = { "Controlador comando productos"})
-public class ProductoControlador {
+public class ComandoProductoControlador {
 
     private final ManejadorRegistrarProducto manejadorRegistrarProducto;
     private final ManejadorEditarProducto manejadorEditarProducto;
     private final ManejadorListarProductos manejadorListarProductos;
 
     @Autowired
-    public ProductoControlador(ManejadorRegistrarProducto manejadorRegistrarProducto,
-                               ManejadorEditarProducto manejadorEditarProducto,
-                               ManejadorListarProductos manejadorListarProductos) {
+    public ComandoProductoControlador(ManejadorRegistrarProducto manejadorRegistrarProducto,
+                                      ManejadorEditarProducto manejadorEditarProducto,
+                                      ManejadorListarProductos manejadorListarProductos) {
         this.manejadorRegistrarProducto = manejadorRegistrarProducto;
         this.manejadorEditarProducto = manejadorEditarProducto;
         this.manejadorListarProductos = manejadorListarProductos;

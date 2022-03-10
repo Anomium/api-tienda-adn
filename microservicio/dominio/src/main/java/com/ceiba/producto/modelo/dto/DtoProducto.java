@@ -1,17 +1,13 @@
-package com.ceiba.producto;
+package com.ceiba.producto.modelo.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.time.LocalDate;
 
 @Getter
-@Setter
 @AllArgsConstructor
-@NoArgsConstructor
-public class ComandoProducto {
+public class DtoProducto {
 
     private Long id;
     private String nombre;

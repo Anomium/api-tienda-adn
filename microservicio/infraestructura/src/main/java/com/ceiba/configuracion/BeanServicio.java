@@ -1,5 +1,7 @@
 package com.ceiba.configuracion;
 
+import com.ceiba.carrito.puerto.repositorio.RepositorioCarrito;
+import com.ceiba.carrito.servicio.ServicioCrearCarrito;
 import com.ceiba.producto.puerto.repositorio.RepositorioProducto;
 import com.ceiba.producto.servicio.ServicioActualizarProducto;
 import com.ceiba.producto.servicio.ServicioRegistrarProducto;
@@ -36,6 +38,11 @@ public class BeanServicio {
     @Bean
     public ServicioActualizarProducto servicioActualizarProducto(RepositorioProducto repositorioProducto) {
         return new ServicioActualizarProducto(repositorioProducto);
+    }
+
+    @Bean
+    public ServicioCrearCarrito servicioCrearCarrito(RepositorioCarrito repositorioCarrito) {
+        return new ServicioCrearCarrito(repositorioCarrito);
     }
 
 }

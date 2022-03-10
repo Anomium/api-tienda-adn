@@ -1,6 +1,6 @@
 package com.ceiba.usuario.comando.fabrica;
 
-import com.ceiba.producto.ComandoProducto;
+import com.ceiba.producto.comando.ComandoProducto;
 import com.ceiba.producto.modelo.entidad.Producto;
 import org.springframework.stereotype.Component;
 
