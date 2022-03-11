@@ -2,15 +2,12 @@ package com.ceiba.carrito.servicio;
 
 import com.ceiba.carrito.modelo.entidad.Carrito;
 import com.ceiba.carrito.puerto.repositorio.RepositorioCarrito;
-import com.ceiba.dominio.excepcion.ExcepcionFechaFueraRango;
 
-import java.time.*;
-import java.util.Calendar;
 import java.util.List;
 
 public class ServicioCrearCarrito {
 
-    public static final String SE_TRABAJA_EN_DIAS_HABILES_Y_FESTIVOS = "Se trabaja en dias habiles y festivos.";
+    public static final String PENDIENTE = "PENDIENTE";
     private final RepositorioCarrito repositorioCarrito;
 
     public ServicioCrearCarrito(RepositorioCarrito repositorioCarrito) {
@@ -18,24 +15,31 @@ public class ServicioCrearCarrito {
     }
 
     public void ejecutar(List<Carrito> carritos) {
+
         carritos.forEach(carrito -> {
-            validarFecha(carrito.getFecha());
+            validarCuponYCalcularDescuento(carrito);
+            calcularPrecioTotal(carrito);
+            carrito.setEstadoCompra(PENDIENTE);
             this.repositorioCarrito.crear(carrito);
         });
 
     }
 
-    private void validarFecha(LocalDate fecha) {
-        if (validarQueNoSeaDiaDeSemana(fecha)) {
-            throw new ExcepcionFechaFueraRango(SE_TRABAJA_EN_DIAS_HABILES_Y_FESTIVOS);
+    private void validarCuponYCalcularDescuento(Carrito carrito) {
+        if(validarCupon(carrito.getCupon())) {
+            carrito.setPrecioProducto(descuento(carrito.getPrecioProducto()));
         }
-
     }
 
-    private boolean validarQueNoSeaDiaDeSemana(LocalDate fecha) {
-
-        return (fecha.getDayOfWeek() == DayOfWeek.SATURDAY ||
-                fecha.getDayOfWeek() == DayOfWeek.SUNDAY);
+    private boolean validarCupon(String cupon) {
+        return repositorioCarrito.existeCupon(cupon);
     }
 
+    private Double descuento(Double precioProducto) {
+        return precioProducto * 0.25;
+    }
+
+    private void calcularPrecioTotal(Carrito carrito) {
+        carrito.setPrecioTotal(carrito.getCantidad() * carrito.getPrecioProducto());
+    }
 }

@@ -9,8 +9,9 @@ import org.junit.jupiter.api.Test;
 import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
-public class CarritoTest {
+class CarritoTest {
 
     @Test
     void deberiaCrearCorrectamenteElCarrito() {
@@ -24,6 +25,8 @@ public class CarritoTest {
         assertEquals(LocalDate.parse("2022-03-10"), carrito.getFecha());
         assertEquals("12345", carrito.getNombreCliente());
         assertEquals("123456789", carrito.getIdentificacion());
+        assertNull(carrito.getCupon());
+        assertNull(carrito.getEstadoCompra());
     }
 
     @Test
@@ -55,18 +58,6 @@ public class CarritoTest {
 
         //Arrange
         CarritoTestDataBuilder carritoTestDataBuilder = new CarritoTestDataBuilder().conPrecioProducto(null);
-        //act-assert
-        BasePrueba.assertThrows(() -> {
-                    carritoTestDataBuilder.build();
-                },
-                ExcepcionValorObligatorio.class, "Se debe ingresar el precio del producto.");
-    }
-
-    @Test
-    void deberiaFallarSinPrecioTotalDelProducto() {
-
-        //Arrange
-        CarritoTestDataBuilder carritoTestDataBuilder = new CarritoTestDataBuilder().conPrecioTotal(null);
         //act-assert
         BasePrueba.assertThrows(() -> {
                     carritoTestDataBuilder.build();
@@ -109,4 +100,5 @@ public class CarritoTest {
                 },
                 ExcepcionValorObligatorio.class, "Se debe ingresar la identificacion.");
     }
+
 }

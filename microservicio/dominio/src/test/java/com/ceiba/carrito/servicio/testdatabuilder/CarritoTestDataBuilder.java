@@ -13,6 +13,8 @@ public class CarritoTestDataBuilder {
     private LocalDate fecha;
     private String nombreCliente;
     private String identificacion;
+    private String cupon;
+    private String estadoCompra;
 
     public CarritoTestDataBuilder() {
         nombre = "1234";
@@ -22,6 +24,8 @@ public class CarritoTestDataBuilder {
         fecha = LocalDate.parse("2022-03-10");
         nombreCliente = "12345";
         identificacion = "123456789";
+        cupon = null;
+        estadoCompra = null;
     }
 
     public CarritoTestDataBuilder conNombre(String nombre) {
@@ -60,8 +64,18 @@ public class CarritoTestDataBuilder {
         return this;
     }
 
+    public CarritoTestDataBuilder conCupon(String cupon) {
+        this.cupon = cupon;
+        return this;
+    }
+
+    public CarritoTestDataBuilder conEstadoCompra(String estadoCompra) {
+        this.estadoCompra = estadoCompra;
+        return this;
+    }
+
     public Carrito build() {
         return new Carrito(nombre, cantidad, precioProducto, precioTotal,
-                fecha, nombreCliente, identificacion);
+                fecha, nombreCliente, identificacion, cupon, estadoCompra);
     }
 }

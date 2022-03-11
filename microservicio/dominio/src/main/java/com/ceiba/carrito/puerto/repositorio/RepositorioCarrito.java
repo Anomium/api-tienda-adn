@@ -6,4 +6,7 @@ public interface RepositorioCarrito {
 
     void crear(Carrito carrito);
 
+    void actualizar(Carrito carrito);
+
+    boolean existeCupon(String cupon);
 }

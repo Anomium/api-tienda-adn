@@ -13,6 +13,8 @@ public class ComandoCarritoTestDataBuilder {
     private LocalDate fecha;
     private String nombreCliente;
     private String identificacion;
+    private String cupon;
+    private String estadoCompra;
 
 
     public ComandoCarritoTestDataBuilder() {
@@ -23,11 +25,13 @@ public class ComandoCarritoTestDataBuilder {
         fecha = LocalDate.parse("2022-03-08");
         nombreCliente = "KH";
         identificacion = "123456789";
+        cupon = "f1c053a5-cada-4511-a0c2-79d4d21de880";
+        estadoCompra = "PENDIENTE";
     }
 
     public ComandoCarrito build() {
         return new ComandoCarrito(id, nombre, cantidad, precioProducto,
-                precioTotal, fecha, nombreCliente, identificacion);
+                precioTotal, fecha, nombreCliente, identificacion, cupon, estadoCompra);
     }
 
 }

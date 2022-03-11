@@ -21,5 +21,7 @@ public class ComandoCarrito {
     private LocalDate fecha;
     private String nombreCliente;
     private String identificacion;
+    private String cupon;
+    private String estadoCompra;
 
 }

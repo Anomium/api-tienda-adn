@@ -1,2 +1,2 @@
-insert into carrito (nombre, cantidad, precio_producto, precio_total, fecha, nombre_cliente, identificacion)
-values (:nombre, :cantidad, :precioProducto, :precioTotal, :fecha, :nombreCliente, :identificacion)
+insert into carrito (nombre, cantidad, precio_producto, precio_total, fecha, nombre_cliente, identificacion, cupon, estado_compra)
+values (:nombre, :cantidad, :precioProducto, :precioTotal, :fecha, :nombreCliente, :identificacion, :cupon, :estadoCompra);
