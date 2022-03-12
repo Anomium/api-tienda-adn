@@ -34,7 +34,7 @@ class ComandoProductoControladorTest {
     @Autowired
     private MockMvc mocMvc;
 
-/*    @Test
+    @Test
     @DisplayName("Deberia crear un producto")
     void registrar() throws Exception {
 
@@ -45,7 +45,7 @@ class ComandoProductoControladorTest {
                         .content(objectMapper.writeValueAsString(producto)))
                 .andExpect(status().isOk());
 
-    }*/
+    }
 
     @Test
     @DisplayName("Deberia editar un producto")
