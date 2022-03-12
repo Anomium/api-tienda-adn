@@ -13,7 +13,7 @@ public class ComandoProductoTestDataBuilder {
     private LocalDate fechaCreacion;
 
     public ComandoProductoTestDataBuilder() {
-        nombre = "Esto es una prueba";
+        nombre = "Esto es una prueba1";
         precio = 30.0;
         cantidad = 6;
         fechaCreacion = LocalDate.parse("2022-03-08");

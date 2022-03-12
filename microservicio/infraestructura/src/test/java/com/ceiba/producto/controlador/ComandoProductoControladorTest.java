@@ -38,7 +38,7 @@ class ComandoProductoControladorTest {
     @DisplayName("Deberia crear un producto")
     void registrar() throws Exception {
 
-        ComandoProducto producto = new ComandoProductoTestDataBuilder().build();
+        ComandoProducto producto = new ComandoProductoTestDataBuilder().conNombre("Esto es una prueba3").build();
 
         mocMvc.perform(post("/productos")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -52,7 +52,7 @@ class ComandoProductoControladorTest {
     void editar() throws Exception {
 
         Long id = 1L;
-        ComandoProducto producto = new ComandoProductoTestDataBuilder().build();
+        ComandoProducto producto = new ComandoProductoTestDataBuilder().conNombre("Esto es una prueba1").build();
 
         mocMvc.perform(put("/productos/{id}",id)
                         .contentType(MediaType.APPLICATION_JSON)
