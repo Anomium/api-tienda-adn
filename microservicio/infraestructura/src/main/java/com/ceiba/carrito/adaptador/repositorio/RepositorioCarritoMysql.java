@@ -21,7 +21,7 @@ public class RepositorioCarritoMysql implements RepositorioCarrito {
     @SqlStatement(namespace="carrito", value="existePorNombre")
     private static String sqlExistePorNombre;
 
-    @SqlStatement(namespace="carrito", value="existePorid")
+    @SqlStatement(namespace="carrito", value="existePorId")
     private static String sqlExistePorId;
 
     public RepositorioCarritoMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
