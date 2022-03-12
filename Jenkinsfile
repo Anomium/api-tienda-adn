@@ -66,7 +66,7 @@ pipeline{
 		{
 			steps{
         sonarqubeMasQualityGatesP(sonarKey:'co.com.ceiba.adn:tiendaadn.melvin.martinez', 
-        sonarName:'CeibaADN-ApiTiendaAdn(melvin.martinez)', 
+        sonarName:'ADN-tienda-api(melvin.martinez)', 
         sonarPathProperties:'./sonar-project.properties')
 				}
 		}
