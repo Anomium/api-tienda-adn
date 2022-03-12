@@ -2,7 +2,7 @@
 pipeline {
   //Donde se va a ejecutar el Pipeline
   agent {
-    label 'Slave5_Centos'
+    label 'Slave_Induccion'
   }
 
   //Opciones específicas de Pipeline dentro del Pipeline
@@ -74,7 +74,7 @@ pipeline {
     }
     success {
       echo 'This will run only if successful'
-      junit 'build/test-results/test/*.xml'
+      junit '**/build/test-results/test/*.xml'
     }
     failure {
       echo 'This will run only if failed'
