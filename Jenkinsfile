@@ -1,9 +1,7 @@
 @Library('ceiba-jenkins-library') _
 pipeline {
   //Donde se va a ejecutar el Pipeline
-  agent {
-    label 'Slave_Induccion'
-  }
+  agent any
 
   //Opciones específicas de Pipeline dentro del Pipeline
   options {
