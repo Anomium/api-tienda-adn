@@ -11,6 +11,11 @@ pipeline {
  	disableConcurrentBuilds()
   }
 
+  triggers {
+    // @yearly, @annually, @monthly, @weekly, @daily, @midnight, and @hourly o definir un intervalo ejemplo H */4 * * 1-5
+    pollSCM('@daily') //define un intervalo regular en el que Jenkins debería verificar los cambios de fuente nuevos
+  }
+
   //Una sección que define las herramientas “preinstaladas” en Jenkins
   tools {
     jdk 'JDK8_Centos' //Verisión preinstalada en la Configuración del Master
