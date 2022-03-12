@@ -52,7 +52,7 @@ pipeline {
     stage('Static Code Analysis') {
       steps{
         sonarqubeMasQualityGatesP(sonarKey:'co.com.ceiba.adn:tienda.adn.melvin.martinez', 
-        sonarName:'ADN-Tienda-api(melvin.martinez)', 
+        sonarName:'ADN-Tienda-api-melvin.martinez', 
         sonarPathProperties:'./sonar-project.properties')
       }
     }
