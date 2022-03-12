@@ -10,7 +10,7 @@ pipeline{
     }
 
     environment {
-        PROJECT_PATH_BACK = 'presupuesto'
+        PROJECT_PATH_BACK = 'microservicio'
     }
 
     triggers {
@@ -75,9 +75,9 @@ pipeline{
 		{
 			steps {
 				echo "------------>Build<------------"
-				sh 'chmod +x ./presupuesto/gradlew'
-				sh './presupuesto/gradlew --b ./presupuesto/build.gradle clean'
-				sh './presupuesto/gradlew --b ./presupuesto/build.gradle build -x test'
+				sh 'chmod +x ./microservicio/gradlew'
+				sh './microservicio/gradlew --b ./microservicio/build.gradle clean'
+				sh './microservicio/gradlew --b ./microservicio/build.gradle build -x test'
 			}
 		}  
 	}
