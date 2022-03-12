@@ -18,7 +18,7 @@ public class ComandoCarritoTestDataBuilder {
 
 
     public ComandoCarritoTestDataBuilder() {
-        nombre = "Esto es una prueba";
+        nombre = "Esto es una prueba1";
         cantidad = 2;
         precioProducto = 30.0;
         precioTotal = 1500.0;
