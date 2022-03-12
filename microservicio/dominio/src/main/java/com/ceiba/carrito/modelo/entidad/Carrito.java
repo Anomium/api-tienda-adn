@@ -18,6 +18,7 @@ public class Carrito {
     public static final String SE_DEBE_INGRESAR_EL_NOMBRE_DEL_CLIENTE = "Se debe ingresar el nombre del cliente.";
     public static final String SE_DEBE_INGRESAR_LA_IDENTIFICACION = "Se debe ingresar la identificacion.";
 
+    private Long id;
     private String nombre;
     private Integer cantidad;
     private Double precioProducto;
@@ -28,7 +29,7 @@ public class Carrito {
     private String cupon;
     private String estadoCompra;
 
-    public Carrito(String nombre, Integer cantidad, Double precioProducto, Double precioTotal, LocalDate fecha,
+    public Carrito(Long id, String nombre, Integer cantidad, Double precioProducto, Double precioTotal, LocalDate fecha,
                    String nombreCliente, String identificacion, String cupon, String estadoCompra) {
         validarObligatorio(nombre, SE_DEBE_INGRESAR_EL_NOMBRE_DEL_PRODUCTO);
         validarObligatorio(cantidad, SE_DEBE_INGRESAR_EL_CANTIDAD_DEL_PRODUCTO);
@@ -37,6 +38,7 @@ public class Carrito {
         validarObligatorio(nombreCliente, SE_DEBE_INGRESAR_EL_NOMBRE_DEL_CLIENTE);
         validarObligatorio(identificacion, SE_DEBE_INGRESAR_LA_IDENTIFICACION);
 
+        this.id = id;
         this.nombre = nombre;
         this.cantidad = cantidad;
         this.precioProducto = precioProducto;

@@ -6,6 +6,8 @@ public interface RepositorioProducto {
 
     void crear(Producto producto);
 
-    void ejecutar(Producto producto);
+    void actualizar(Producto producto);
+
+    boolean existePorId(Long id);
 
 }

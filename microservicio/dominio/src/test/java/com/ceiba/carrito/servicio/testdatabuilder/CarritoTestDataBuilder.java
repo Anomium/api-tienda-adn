@@ -6,6 +6,7 @@ import java.time.LocalDate;
 
 public class CarritoTestDataBuilder {
 
+    private Long id;
     private String nombre;
     private Integer cantidad;
     private Double precioProducto;
@@ -17,6 +18,7 @@ public class CarritoTestDataBuilder {
     private String estadoCompra;
 
     public CarritoTestDataBuilder() {
+        id = 1L;
         nombre = "1234";
         cantidad = 8;
         precioProducto = 31.0;
@@ -26,6 +28,11 @@ public class CarritoTestDataBuilder {
         identificacion = "123456789";
         cupon = null;
         estadoCompra = null;
+    }
+
+    public CarritoTestDataBuilder conId(Long id){
+        this.id = id;
+        return this;
     }
 
     public CarritoTestDataBuilder conNombre(String nombre) {
@@ -75,7 +82,7 @@ public class CarritoTestDataBuilder {
     }
 
     public Carrito build() {
-        return new Carrito(nombre, cantidad, precioProducto, precioTotal,
+        return new Carrito(id, nombre, cantidad, precioProducto, precioTotal,
                 fecha, nombreCliente, identificacion, cupon, estadoCompra);
     }
 }

@@ -21,6 +21,9 @@ public class RepositorioCarritoMysql implements RepositorioCarrito {
     @SqlStatement(namespace="carrito", value="existePorNombre")
     private static String sqlExistePorNombre;
 
+    @SqlStatement(namespace="carrito", value="existePorid")
+    private static String sqlExistePorId;
+
     public RepositorioCarritoMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
     }
@@ -39,6 +42,14 @@ public class RepositorioCarritoMysql implements RepositorioCarrito {
     public boolean existeCupon(String cupon) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("nombre", cupon);
+
+        return Boolean.TRUE.equals(this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorNombre, paramSource, Boolean.class));
+    }
+
+    @Override
+    public boolean existePorId(Long id) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("id", id);
 
         return Boolean.TRUE.equals(this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorNombre, paramSource, Boolean.class));
     }

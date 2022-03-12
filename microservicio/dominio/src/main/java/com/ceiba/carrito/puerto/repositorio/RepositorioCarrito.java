@@ -9,4 +9,6 @@ public interface RepositorioCarrito {
     void actualizar(Carrito carrito);
 
     boolean existeCupon(String cupon);
+
+    boolean existePorId(Long id);
 }

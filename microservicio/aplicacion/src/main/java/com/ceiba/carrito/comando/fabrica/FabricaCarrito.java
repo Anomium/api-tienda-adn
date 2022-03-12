@@ -15,6 +15,7 @@ public class FabricaCarrito {
 
         comandoCarrito.forEach(comCar ->
                 carritos.add(new Carrito(
+                    comCar.getId(),
                     comCar.getNombre(),
                     comCar.getCantidad(),
                     comCar.getPrecioProducto(),
