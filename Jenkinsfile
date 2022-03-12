@@ -38,9 +38,9 @@ pipeline {
     stage('Compile & Unit Tests') {
       steps{
         echo "------------>Compile & Unit Tests<------------"
-        sh '''chmod +x ./microservicio/gradlew'''
-        sh '''./microservicio/gradlew --b ./microservicio/build.gradle clean'''
-		    sh '''./microservicio/gradlew --b ./microservicio/build.gradle test'''
+        sh '''"chmod +x ./microservicio/gradlew"'''
+        sh '''"./microservicio/gradlew --b ./microservicio/build.gradle clean"'''
+		    sh '''"./microservicio/gradlew --b ./microservicio/build.gradle test"'''
       }
     }
 
@@ -48,7 +48,7 @@ pipeline {
       steps{
         echo '------------>Análisis de código estático<------------'
         sonarqubeMasQualityGatesP(sonarKey:'''co.com.ceiba.adn:tienda.adn.melvin.martinez''', 
-        sonarName:'''ADN-Tienda-api(melvin.martinez)''', 
+        sonarName:'''"ADN-Tienda-api(melvin.martinez)"''', 
         sonarPathProperties:'''./sonar-project.properties''')
       }
     }
