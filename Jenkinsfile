@@ -1,7 +1,9 @@
 @Library('ceiba-jenkins-library') _
 pipeline {
   //Donde se va a ejecutar el Pipeline
-  agent any
+  agent {
+    label 'Slave5_Centos'
+  }
 
   //Opciones específicas de Pipeline dentro del Pipeline
   options {
