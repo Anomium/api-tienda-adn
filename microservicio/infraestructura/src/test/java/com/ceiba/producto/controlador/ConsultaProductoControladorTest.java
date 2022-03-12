@@ -35,7 +35,7 @@ class ConsultaProductoControladorTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
-                .andExpect(jsonPath("$[0].nombre", is("Esto es una prueba")))
+                .andExpect(jsonPath("$[0].nombre", is("Esto es una prueba1")))
                 .andExpect(jsonPath("$[0].precio", is(30.0)))
                 .andExpect(jsonPath("$[0].cantidad", is(6)))
                 .andExpect(jsonPath("$[0].fechaCreacion", is("2022-03-08")))
