@@ -42,7 +42,7 @@ dependencies {
 	implementation project(':dominio')
 	implementation project(':aplicacion')
 
-	implementation 'com.h2database:h2:2.1.210'
+	runtimeOnly 'com.h2database:h2'
 	implementation project(':comun:comun-infraestructura')
 	implementation project(':comun:comun-aplicacion')
 }
