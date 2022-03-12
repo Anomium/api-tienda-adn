@@ -1,4 +1,4 @@
-package com.ceiba.producto.servicio.productotestbuilder;
+package com.ceiba.producto.servicio.testdatabuilder;
 
 
 import com.ceiba.producto.modelo.entidad.Producto;

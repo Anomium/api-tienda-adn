@@ -3,7 +3,7 @@ package com.ceiba.producto.entidad;
 import com.ceiba.BasePrueba;
 import com.ceiba.dominio.excepcion.ExcepcionValorObligatorio;
 import com.ceiba.producto.modelo.entidad.Producto;
-import com.ceiba.producto.servicio.productotestbuilder.ProductoTestDataBuilder;
+import com.ceiba.producto.servicio.testdatabuilder.ProductoTestDataBuilder;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

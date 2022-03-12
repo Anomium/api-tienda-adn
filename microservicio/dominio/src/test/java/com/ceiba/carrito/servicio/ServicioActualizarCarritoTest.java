@@ -1,9 +1,9 @@
-package com.ceiba.carrito.servicio.testdatabuilder;
+package com.ceiba.carrito.servicio;
 
 import com.ceiba.BasePrueba;
 import com.ceiba.carrito.modelo.entidad.Carrito;
 import com.ceiba.carrito.puerto.repositorio.RepositorioCarrito;
-import com.ceiba.carrito.servicio.ServicioActualizarCarrito;
+import com.ceiba.carrito.servicio.testdatabuilder.CarritoTestDataBuilder;
 import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,7 +11,7 @@ import org.mockito.Mockito;
 
 import java.util.Collections;
 
-public class ServicioActualizarCarritoTest {
+class ServicioActualizarCarritoTest {
 
     @Test
     @DisplayName("Deberia validar la existencia previa del usuario")

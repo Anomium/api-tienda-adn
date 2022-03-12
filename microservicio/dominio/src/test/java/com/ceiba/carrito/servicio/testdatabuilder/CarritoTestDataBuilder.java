@@ -18,7 +18,6 @@ public class CarritoTestDataBuilder {
     private String estadoCompra;
 
     public CarritoTestDataBuilder() {
-        id = 1L;
         nombre = "1234";
         cantidad = 8;
         precioProducto = 31.0;
