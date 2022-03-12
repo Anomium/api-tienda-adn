@@ -29,6 +29,11 @@ public class ComandoCarritoTestDataBuilder {
         estadoCompra = "PENDIENTE";
     }
 
+    public ComandoCarritoTestDataBuilder conId(Long id) {
+        this.id = id;
+        return this;
+    }
+
     public ComandoCarrito build() {
         return new ComandoCarrito(id, nombre, cantidad, precioProducto,
                 precioTotal, fecha, nombreCliente, identificacion, cupon, estadoCompra);

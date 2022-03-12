@@ -15,6 +15,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -36,7 +37,7 @@ class ComandoCarritoControladorTest {
     @Test
     void crear() throws Exception {
 
-        ComandoCarrito carrito = new ComandoCarritoTestDataBuilder().build();
+        ComandoCarrito carrito = new ComandoCarritoTestDataBuilder().conId(1L).build();
         List<ComandoCarrito> carritos = new ArrayList<>();
         carritos.add(carrito);
 
@@ -50,13 +51,11 @@ class ComandoCarritoControladorTest {
     @Test
     void actualizar() throws Exception {
 
-        ComandoCarrito carrito = new ComandoCarritoTestDataBuilder().build();
-        List<ComandoCarrito> carritos = new ArrayList<>();
-        carritos.add(carrito);
+        ComandoCarrito carrito = new ComandoCarritoTestDataBuilder().conId(1L).build();
 
         mocMvc.perform(put("/carritos")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(carritos)))
+                        .content(objectMapper.writeValueAsString(Collections.singletonList(carrito))))
                 .andExpect(status().isOk());
 
     }
