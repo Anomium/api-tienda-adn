@@ -10,4 +10,6 @@ public interface RepositorioProducto {
 
     boolean existePorId(Long id);
 
+    void eliminar(Long id);
+
 }

@@ -1,0 +1,1 @@
+update soporte set estado = :estado where id = :id;

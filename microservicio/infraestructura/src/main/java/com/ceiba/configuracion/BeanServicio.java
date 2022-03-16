@@ -5,7 +5,11 @@ import com.ceiba.carrito.servicio.ServicioActualizarCarrito;
 import com.ceiba.carrito.servicio.ServicioCrearCarrito;
 import com.ceiba.producto.puerto.repositorio.RepositorioProducto;
 import com.ceiba.producto.servicio.ServicioActualizarProducto;
+import com.ceiba.producto.servicio.ServicioEliminarProducto;
 import com.ceiba.producto.servicio.ServicioRegistrarProducto;
+import com.ceiba.soporte.puerto.repositorio.RepositorioSoporte;
+import com.ceiba.soporte.servicio.ServicioActualizarSoporte;
+import com.ceiba.soporte.servicio.ServicioCrearSoporte;
 import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
 import com.ceiba.usuario.servicio.ServicioActualizarUsuario;
 import com.ceiba.usuario.servicio.ServicioCrearUsuario;
@@ -42,6 +46,11 @@ public class BeanServicio {
     }
 
     @Bean
+    public ServicioEliminarProducto servicioEliminarProducto(RepositorioProducto repositorioProducto) {
+        return new ServicioEliminarProducto(repositorioProducto);
+    }
+
+    @Bean
     public ServicioCrearCarrito servicioCrearCarrito(RepositorioCarrito repositorioCarrito) {
         return new ServicioCrearCarrito(repositorioCarrito);
     }
@@ -49,6 +58,16 @@ public class BeanServicio {
     @Bean
     public ServicioActualizarCarrito servicioActualizarCarrito(RepositorioCarrito repositorioCarrito) {
         return new ServicioActualizarCarrito(repositorioCarrito);
+    }
+
+    @Bean
+    public ServicioActualizarSoporte servicioActualizarSoporte(RepositorioSoporte repositorioSoporte) {
+        return new ServicioActualizarSoporte(repositorioSoporte);
+    }
+
+    @Bean
+    public ServicioCrearSoporte servicioCrearSoporte(RepositorioSoporte repositorioSoporte) {
+        return new ServicioCrearSoporte(repositorioSoporte);
     }
 
 }

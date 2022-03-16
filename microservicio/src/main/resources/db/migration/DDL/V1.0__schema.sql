@@ -26,8 +26,7 @@ create table carrito (
  identificacion varchar(100) not null,
  cupon varchar(50),
  estado_compra varchar(10),
- primary key (id),
- constraint fk_nombre foreign key(nombre) references producto(nombre)
+ primary key (id)
 );
 
 create table cupones(
@@ -35,6 +34,15 @@ create table cupones(
     nombre varchar(100) not null,
     fecha_utilizacion date,
     utilizado boolean,
+    primary key (id)
+);
+
+create table soporte(
+    id int(100) not null auto_increment,
+    descripcion_soporte varchar(100) not null,
+    fecha_creacion date,
+    fecha_a_solucionar date,
+    estado varchar(50),
     primary key (id)
 );
 
@@ -58,3 +66,6 @@ insert into cupones (id, nombre, fecha_utilizacion, utilizado)
 values ('bcfdb8a5-b27c-4edd-94e6-46378240df05', '31f7658c-6a26-42a2-bf3c-820f07857c5d', null, false);
 insert into cupones (id, nombre, fecha_utilizacion, utilizado)
 values ('1a32e2ba-03a8-49fc-9a4a-b76fdd72ebb9', '965fa89c-5c56-43d6-bce7-ef40651feeff', null, false);
+
+insert into soporte (descripcion_soporte, fecha_creacion, fecha_a_solucionar, estado)
+values ('esto es una prueba', '2022-03-08', '2022-03-08', 'CREADO');

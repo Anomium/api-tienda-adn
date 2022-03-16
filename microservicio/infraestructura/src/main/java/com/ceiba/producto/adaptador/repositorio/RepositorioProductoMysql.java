@@ -21,6 +21,9 @@ public class RepositorioProductoMysql implements RepositorioProducto {
     @SqlStatement(namespace="producto", value="existePorId")
     private static String sqlExistePorId;
 
+    @SqlStatement(namespace="producto", value="eliminar")
+    private static String sqlEliminar;
+
     public RepositorioProductoMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
     }
@@ -42,5 +45,14 @@ public class RepositorioProductoMysql implements RepositorioProducto {
 
         return Boolean.TRUE.equals(this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorId, paramSource, Boolean.class));
     }
+
+    @Override
+    public void eliminar(Long id) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("id", id);
+
+        this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlEliminar, paramSource);
+    }
+
 
 }
