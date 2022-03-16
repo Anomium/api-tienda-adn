@@ -67,7 +67,7 @@ class ComandoProductoControladorTest {
     @DisplayName("Deberia eliminar un producto")
     void deberiaEliminarUnProducto() throws Exception {
         // arrange
-        Long id = 2L;
+        Long id = 3L;
         // act - assert
         mocMvc.perform(delete("/productos/{id}",id)
                         .contentType(MediaType.APPLICATION_JSON)
@@ -77,7 +77,7 @@ class ComandoProductoControladorTest {
         mocMvc.perform(get("/productos")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(1)));
+                .andExpect(jsonPath("$", hasSize(2)));
     }
 
 }
