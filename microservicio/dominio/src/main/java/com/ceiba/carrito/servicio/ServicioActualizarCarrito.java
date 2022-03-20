@@ -14,6 +14,7 @@ public class ServicioActualizarCarrito {
     public static final String COMPRADO = "COMPRADO";
     private static final String EL_CARRITO_NO_EXISTE_EN_EL_SISTEMA = "El carrito no existe en el sistema";
     public static final String SE_TRABAJA_EN_DIAS_HABILES_Y_FESTIVOS = "Se trabaja en dias habiles y festivos.";
+    public static final double DESCUENTO_A_PAGAR = 0.9;
     private final RepositorioCarrito repositorioCarrito;
 
     public ServicioActualizarCarrito(RepositorioCarrito repositorioCarrito) {
@@ -23,7 +24,8 @@ public class ServicioActualizarCarrito {
     public void ejecutar(List<Carrito> carritos) {
         carritos.forEach(carrito -> {
             validarExistenciaPrevia(carrito);
-            validarQueNoSeaDiaDeSemana(carrito.getFecha());
+            validarQueNoSeaDiaDeSemana(LocalDate.now());
+            validarCuponYCalcularPrecioTotal(carrito);
             carrito.setEstadoCompra(COMPRADO);
             this.repositorioCarrito.actualizar(carrito);
         });
@@ -48,5 +50,15 @@ public class ServicioActualizarCarrito {
                 fecha.getDayOfWeek() == DayOfWeek.SUNDAY);
     }
 
+    private void validarCuponYCalcularPrecioTotal(Carrito carrito) {
+        boolean existeCupon = this.repositorioCarrito.existeCupon(carrito.getCupon());
+        double precioConDescuento;
+        if (existeCupon) {
+            precioConDescuento = carrito.getPrecioProducto() * carrito.getCantidad() * DESCUENTO_A_PAGAR;
+        } else {
+            precioConDescuento = carrito.getPrecioProducto() * carrito.getCantidad();
+        }
+        carrito.setPrecioTotal(precioConDescuento);
+    }
 }
 

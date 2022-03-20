@@ -4,19 +4,17 @@ import com.ceiba.producto.modelo.dto.DtoProducto;
 import com.ceiba.producto.puerto.dao.DaoProducto;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-
 @Component
-public class ManejadorListarProductos {
+public class ManejadorListarPorIdPorducto {
 
     private final DaoProducto daoProducto;
 
-    public ManejadorListarProductos(DaoProducto daoProducto) {
+    public ManejadorListarPorIdPorducto(DaoProducto daoProducto) {
         this.daoProducto = daoProducto;
     }
 
-    public List<DtoProducto> ejecutar() {
-        return this.daoProducto.listar();
+    public DtoProducto ejecutar(Long id) {
+        return this.daoProducto.listar(id);
     }
 
 }

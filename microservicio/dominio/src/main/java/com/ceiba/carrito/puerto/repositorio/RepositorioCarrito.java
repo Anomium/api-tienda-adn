@@ -11,4 +11,7 @@ public interface RepositorioCarrito {
     boolean existeCupon(String cupon);
 
     boolean existePorId(Long id);
+
+    void eliminar(Long id);
+
 }

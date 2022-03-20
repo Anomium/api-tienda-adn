@@ -1,6 +1,7 @@
-package com.ceiba.carrito.controlador;
+package com.ceiba.soporte.controlador;
 
 import com.ceiba.ApplicationMock;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,30 +19,25 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ExtendWith(SpringExtension.class)
-@WebMvcTest(ConsultaControladorCarrito.class)
+@WebMvcTest(ConsultaControladorSoporte.class)
 @ContextConfiguration(classes= ApplicationMock.class)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
-class ConsultaControladorCarritoTest {
-
-
-    private final MockMvc mocMvc;
+class ConsultaControladorSoporteTest {
 
     @Autowired
-    ConsultaControladorCarritoTest(MockMvc mocMvc) {
-        this.mocMvc = mocMvc;
-    }
- 
-    @Test
-    void listarCarritos() throws Exception {
+    private MockMvc mocMvc;
 
-        mocMvc.perform(get("/carritos")
+    @Test
+    @DisplayName("Deberia listar soporte")
+    void deberiaListarSoportes() throws Exception {
+        // arrange
+        // act - assert
+        mocMvc.perform(get("/soporte")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(2)))
-                .andExpect(jsonPath("$[0].nombre", is("Esto es una prueba1")))
-                .andExpect(jsonPath("$[0].precio", is(30.0)))
-                .andExpect(jsonPath("$[0].cantidad", is(6)))
-                .andExpect(jsonPath("$[0].precioTotal", is(40.0)))
+                .andExpect(jsonPath("$[0].descripcion", is("esto es una prueba")))
+                .andExpect(jsonPath("$[0].estado", is("PENDIENTE")))
                 .andExpect(jsonPath("$[0].id", is(1)));
 
     }

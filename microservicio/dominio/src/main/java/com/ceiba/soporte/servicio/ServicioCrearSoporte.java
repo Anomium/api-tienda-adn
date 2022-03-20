@@ -8,6 +8,8 @@ import java.time.LocalDate;
 
 public class ServicioCrearSoporte {
 
+    public static final String ESTADO_PENDIENTE = "PENDIENTE";
+
     private final RepositorioSoporte repositorioSoporte;
 
     public ServicioCrearSoporte(RepositorioSoporte repositorioSoporte) {
@@ -15,6 +17,8 @@ public class ServicioCrearSoporte {
     }
 
     public Long ejecutar(Soporte soporte) {
+        soporte.setFechaCreacion(LocalDate.now());
+        soporte.setEstado(ESTADO_PENDIENTE);
         soporte.setFechaASolucionar(calcularFechaHabil());
         return this.repositorioSoporte.crear(soporte);
     }

@@ -16,7 +16,6 @@ public class ComandoProductoTestDataBuilder {
         nombre = "Esto es una prueba1";
         precio = 30.0;
         cantidad = 6;
-        fechaCreacion = LocalDate.parse("2022-03-08");
     }
 
     public ComandoProductoTestDataBuilder conNombre(String nombre) {
@@ -25,6 +24,6 @@ public class ComandoProductoTestDataBuilder {
     }
 
     public ComandoProducto build() {
-        return new ComandoProducto(id, nombre, precio, cantidad, fechaCreacion);
+        return new ComandoProducto(id, nombre, precio, cantidad);
     }
 }

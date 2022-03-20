@@ -1,0 +1,1 @@
+delete from carrito where id = :id and ESTADO_COMPRA = 'PENDIENTE';

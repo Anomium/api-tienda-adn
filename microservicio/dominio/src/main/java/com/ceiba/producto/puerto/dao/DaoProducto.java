@@ -7,5 +7,6 @@ import java.util.List;
 public interface DaoProducto {
 
     List<DtoProducto> listar();
+    DtoProducto listar(Long id);
 
 }

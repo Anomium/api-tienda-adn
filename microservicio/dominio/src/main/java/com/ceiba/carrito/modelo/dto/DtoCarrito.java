@@ -12,5 +12,6 @@ public class DtoCarrito {
     private Integer cantidad;
     private Double precio;
     private Double precioTotal;
+    private String estadoCompra;
 
 }

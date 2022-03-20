@@ -1,1 +1,1 @@
-select count(1) from producto where id = :id
+select count(1) from carrito where id = :id and estado_compra = 'PENDIENTE';

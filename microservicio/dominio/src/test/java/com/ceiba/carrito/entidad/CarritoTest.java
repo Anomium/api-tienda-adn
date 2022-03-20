@@ -3,6 +3,7 @@ package com.ceiba.carrito.entidad;
 import com.ceiba.BasePrueba;
 import com.ceiba.carrito.modelo.entidad.Carrito;
 import com.ceiba.carrito.servicio.testdatabuilder.CarritoTestDataBuilder;
+import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
 import com.ceiba.dominio.excepcion.ExcepcionValorObligatorio;
 import org.junit.jupiter.api.Test;
 
@@ -23,12 +24,10 @@ class CarritoTest {
         assertEquals(31.0, carrito.getPrecioProducto());
         assertEquals(410.1, carrito.getPrecioTotal());
         assertEquals(LocalDate.parse("2022-03-10"), carrito.getFecha());
-        assertEquals("12345", carrito.getNombreCliente());
-        assertEquals("123456789", carrito.getIdentificacion());
         assertNull(carrito.getCupon());
         assertNull(carrito.getEstadoCompra());
     }
-
+//id nombre precio cantidad
     @Test
     void deberiaFallarSinNombreDelProducto() {
 
@@ -66,39 +65,39 @@ class CarritoTest {
     }
 
     @Test
-    void deberiaFallarSinFechaDelProducto() {
+    void deberiaFallarConCantidadNegativaDelProducto() {
 
         //Arrange
-        CarritoTestDataBuilder carritoTestDataBuilder = new CarritoTestDataBuilder().conFecha(null);
+        CarritoTestDataBuilder carritoTestDataBuilder = new CarritoTestDataBuilder().conCantidad(-1);
         //act-assert
         BasePrueba.assertThrows(() -> {
                     carritoTestDataBuilder.build();
                 },
-                ExcepcionValorObligatorio.class, "Se debe ingresar la fecha de creacion del producto.");
+                ExcepcionValorInvalido.class, "Se debe de ingresar un valor positivo.");
     }
 
     @Test
-    void deberiaFallarSinNombreClienteDelProducto() {
+    void deberiaFallarConPrecioProductoNegativaDelProducto() {
 
         //Arrange
-        CarritoTestDataBuilder carritoTestDataBuilder = new CarritoTestDataBuilder().conNombreCliente(null);
+        CarritoTestDataBuilder carritoTestDataBuilder = new CarritoTestDataBuilder().conPrecioProducto(-1.0);
         //act-assert
         BasePrueba.assertThrows(() -> {
                     carritoTestDataBuilder.build();
                 },
-                ExcepcionValorObligatorio.class, "Se debe ingresar el nombre del cliente.");
+                ExcepcionValorInvalido.class, "Se debe de ingresar un valor positivo.");
     }
 
     @Test
-    void deberiaFallarSinIdentificacioneDelProducto() {
+    void deberiaFallarConPrecioTotalNegativaDelProducto() {
 
         //Arrange
-        CarritoTestDataBuilder carritoTestDataBuilder = new CarritoTestDataBuilder().conIdentificacion(null);
+        CarritoTestDataBuilder carritoTestDataBuilder = new CarritoTestDataBuilder().conPrecioTotal(-1.0);
         //act-assert
         BasePrueba.assertThrows(() -> {
                     carritoTestDataBuilder.build();
                 },
-                ExcepcionValorObligatorio.class, "Se debe ingresar la identificacion.");
+                ExcepcionValorInvalido.class, "Se debe de ingresar un valor positivo.");
     }
 
 }

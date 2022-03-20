@@ -22,8 +22,6 @@ create table carrito (
  precio_producto numeric not null,
  precio_total numeric not null,
  fecha date not null,
- nombre_cliente varchar(100) not null,
- identificacion varchar(100) not null,
  cupon varchar(50),
  estado_compra varchar(10),
  primary key (id)
@@ -68,4 +66,4 @@ insert into cupones (id, nombre, fecha_utilizacion, utilizado)
 values ('1a32e2ba-03a8-49fc-9a4a-b76fdd72ebb9', '965fa89c-5c56-43d6-bce7-ef40651feeff', null, false);
 
 insert into soporte (descripcion_soporte, fecha_creacion, fecha_a_solucionar, estado)
-values ('esto es una prueba', '2022-03-08', '2022-03-08', 'CREADO');
+values ('esto es una prueba', '2022-03-08', '2022-03-08', 'PENDIENTE');

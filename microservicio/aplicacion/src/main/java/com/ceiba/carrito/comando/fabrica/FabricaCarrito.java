@@ -18,11 +18,9 @@ public class FabricaCarrito {
                     comCar.getId(),
                     comCar.getNombre(),
                     comCar.getCantidad(),
-                    comCar.getPrecioProducto(),
+                    comCar.getPrecio(),
                     comCar.getPrecioTotal(),
                     comCar.getFecha(),
-                    comCar.getNombreCliente(),
-                    comCar.getIdentificacion(),
                     comCar.getCupon(),
                     comCar.getEstadoCompra()
         )));

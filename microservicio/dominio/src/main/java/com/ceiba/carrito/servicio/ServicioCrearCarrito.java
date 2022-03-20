@@ -3,6 +3,7 @@ package com.ceiba.carrito.servicio;
 import com.ceiba.carrito.modelo.entidad.Carrito;
 import com.ceiba.carrito.puerto.repositorio.RepositorioCarrito;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class ServicioCrearCarrito {
@@ -19,6 +20,7 @@ public class ServicioCrearCarrito {
         carritos.forEach(carrito -> {
             validarCuponYCalcularDescuento(carrito);
             calcularPrecioTotal(carrito);
+            carrito.setFecha(LocalDate.now());
             carrito.setEstadoCompra(PENDIENTE);
             this.repositorioCarrito.crear(carrito);
         });

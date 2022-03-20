@@ -14,8 +14,8 @@ import java.util.Collections;
 class ServicioActualizarCarritoTest {
 
     @Test
-    @DisplayName("Deberia validar la existencia previa del usuario")
-    void deberiaValidarLaExistenciaPreviaDelUsuario() {
+    @DisplayName("Deberia validar la existencia previa del carrito")
+    void deberiaValidarLaExistenciaPreviaDelCarrito() {
         // arrange
         Carrito carrito = new CarritoTestDataBuilder().conId(1L).build();
         RepositorioCarrito repositorioCarrito = Mockito.mock(RepositorioCarrito.class);
@@ -28,11 +28,27 @@ class ServicioActualizarCarritoTest {
 
     @Test
     @DisplayName("Deberia actualizar correctamente en el repositorio")
-    void deberiaActualizarCorrectamenteEnElRepositorio() {
+    void deberiaActualizarCorrectamenteEnElRepositorioConExistenciaCupon() {
         // arrange
-        Carrito carrito = new CarritoTestDataBuilder().conId(1L).build();
+        Carrito carrito = new CarritoTestDataBuilder().conId(1L).conCupon("f1c053a5-cada-4511-a0c2-79d4d21de880").build();
         RepositorioCarrito repositorioCarrito = Mockito.mock(RepositorioCarrito.class);
         Mockito.when(repositorioCarrito.existePorId(Mockito.anyLong())).thenReturn(true);
+        Mockito.when(repositorioCarrito.existeCupon(Mockito.anyString())).thenReturn(true);
+        ServicioActualizarCarrito servicioActualizarCarrito = new ServicioActualizarCarrito(repositorioCarrito);
+        // act
+        servicioActualizarCarrito.ejecutar(Collections.singletonList(carrito));
+        //assert
+        Mockito.verify(repositorioCarrito,Mockito.times(1)).actualizar(carrito);
+    }
+
+    @Test
+    @DisplayName("Deberia actualizar correctamente en el repositorio")
+    void deberiaActualizarCorrectamenteEnElRepositorioConExistenciaCuponFalsa() {
+        // arrange
+        Carrito carrito = new CarritoTestDataBuilder().conId(1L).conCupon("f1c053a5-cada-4511-a0c2-79d4d21de880").build();
+        RepositorioCarrito repositorioCarrito = Mockito.mock(RepositorioCarrito.class);
+        Mockito.when(repositorioCarrito.existePorId(Mockito.anyLong())).thenReturn(true);
+        Mockito.when(repositorioCarrito.existeCupon(Mockito.anyString())).thenReturn(false);
         ServicioActualizarCarrito servicioActualizarCarrito = new ServicioActualizarCarrito(repositorioCarrito);
         // act
         servicioActualizarCarrito.ejecutar(Collections.singletonList(carrito));

@@ -82,6 +82,6 @@ public class CarritoTestDataBuilder {
 
     public Carrito build() {
         return new Carrito(id, nombre, cantidad, precioProducto, precioTotal,
-                fecha, nombreCliente, identificacion, cupon, estadoCompra);
+                fecha, cupon, estadoCompra);
     }
 }

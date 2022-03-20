@@ -16,7 +16,8 @@ public class MapeoCarrito implements RowMapper<DtoCarrito>, MapperResult {
         Integer cantidad = resultSet.getInt("cantidad");
         Double precio = resultSet.getDouble("precio_producto");
         Double preciototal = resultSet.getDouble("precio_total");
-        return new DtoCarrito(id, nombre, cantidad, precio, preciototal);
+        String estadoCompra = resultSet.getString("estado_compra");
+        return new DtoCarrito(id, nombre, cantidad, precio, preciototal, estadoCompra);
     }
 
 }

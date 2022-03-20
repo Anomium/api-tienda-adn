@@ -18,11 +18,14 @@ public class RepositorioCarritoMysql implements RepositorioCarrito {
     @SqlStatement(namespace="carrito", value="actualizar")
     private static String sqlActualizar;
 
-    @SqlStatement(namespace="carrito", value="existePorNombre")
-    private static String sqlExistePorNombre;
+    @SqlStatement(namespace="cupon", value="existeCuponPorId")
+    private static String sqlExisteCuponPorId;
 
     @SqlStatement(namespace="carrito", value="existePorId")
     private static String sqlExistePorId;
+
+    @SqlStatement(namespace="carrito", value="eliminar")
+    private static String sqlEliminar;
 
     public RepositorioCarritoMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
@@ -41,9 +44,9 @@ public class RepositorioCarritoMysql implements RepositorioCarrito {
     @Override
     public boolean existeCupon(String cupon) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
-        paramSource.addValue("nombre", cupon);
+        paramSource.addValue("id", cupon);
 
-        return Boolean.TRUE.equals(this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorNombre, paramSource, Boolean.class));
+        return Boolean.TRUE.equals(this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteCuponPorId, paramSource, Boolean.class));
     }
 
     @Override
@@ -52,6 +55,14 @@ public class RepositorioCarritoMysql implements RepositorioCarrito {
         paramSource.addValue("id", id);
 
         return Boolean.TRUE.equals(this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorId, paramSource, Boolean.class));
+    }
+
+    @Override
+    public void eliminar(Long id) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("id", id);
+
+        this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlEliminar, paramSource);
     }
 
 }

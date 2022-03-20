@@ -7,6 +7,7 @@ import com.ceiba.soporte.puerto.repositorio.RepositorioSoporte;
 public class ServicioActualizarSoporte {
 
     private static final String EL_SOPORTE_NO_EXISTE_EN_EL_SISTEMA = "El soporte no existe en el sistema";
+    public static final String SOLUCIONADO = "SOLUCIONADO";
 
     private final RepositorioSoporte repositorioSoporte;
 
@@ -16,6 +17,7 @@ public class ServicioActualizarSoporte {
 
     public void ejecutar(Soporte soporte) {
         this.validarExistenciaPrevia(soporte);
+        soporte.setEstado(SOLUCIONADO);
         repositorioSoporte.actualizar(soporte);
     }
 

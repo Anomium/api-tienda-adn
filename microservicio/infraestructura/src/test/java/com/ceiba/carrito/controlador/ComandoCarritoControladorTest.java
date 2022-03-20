@@ -37,13 +37,11 @@ class ComandoCarritoControladorTest {
     @Test
     void crear() throws Exception {
 
-        ComandoCarrito carrito = new ComandoCarritoTestDataBuilder().conId(1L).build();
-        List<ComandoCarrito> carritos = new ArrayList<>();
-        carritos.add(carrito);
+        ComandoCarrito carrito = new ComandoCarritoTestDataBuilder().build();
 
         mocMvc.perform(post("/carritos")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(carritos)))
+                        .content(objectMapper.writeValueAsString(carrito)))
                 .andExpect(status().isOk());
 
     }
@@ -55,7 +53,7 @@ class ComandoCarritoControladorTest {
 
         mocMvc.perform(put("/carritos")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(Collections.singletonList(carrito))))
+                        .content(objectMapper.writeValueAsString(carrito)))
                 .andExpect(status().isOk());
 
     }

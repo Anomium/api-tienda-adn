@@ -16,7 +16,7 @@ public class SoporteTestDataBuilder {
         descripcion = "Descripcion prueba";
         fechaCreacion = LocalDate.parse("2022-03-08");
         fechaASolucionar = LocalDate.parse("2022-03-08");
-        estado = "CREADO";
+        estado = "PENDIENTE";
     }
 
     public SoporteTestDataBuilder conId(Long id) {
@@ -24,8 +24,8 @@ public class SoporteTestDataBuilder {
         return this;
     }
 
-    public SoporteTestDataBuilder conEstado(String estado) {
-        this.estado = estado;
+    public SoporteTestDataBuilder conDescripcion(String descripcion) {
+        this.descripcion = descripcion;
         return this;
     }
 

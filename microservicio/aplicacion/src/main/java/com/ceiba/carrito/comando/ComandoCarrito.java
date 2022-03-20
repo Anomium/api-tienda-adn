@@ -16,11 +16,9 @@ public class ComandoCarrito {
     private Long id;
     private String nombre;
     private Integer cantidad;
-    private Double precioProducto;
+    private Double precio;
     private Double precioTotal;
     private LocalDate fecha;
-    private String nombreCliente;
-    private String identificacion;
     private String cupon;
     private String estadoCompra;
 

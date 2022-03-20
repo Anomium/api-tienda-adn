@@ -31,7 +31,7 @@ public class ComandoControladorSoporte {
 
     @PutMapping
     @ApiOperation("Actualizar estado de soporte")
-    public void actualizar(@RequestBody ComandoSoporte comandoSoporte, Long id) {
+    public void actualizar(@RequestBody ComandoSoporte comandoSoporte) {
         manejadorActualizarSoporte.ejecutar(comandoSoporte);
     }
 
