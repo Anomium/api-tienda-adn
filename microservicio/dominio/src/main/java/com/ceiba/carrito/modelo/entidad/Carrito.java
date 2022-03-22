@@ -45,4 +45,15 @@ public class Carrito {
         this.estadoCompra = estadoCompra;
     }
 
+    public Carrito(Long id, Integer cantidad, Double precioProducto) {
+        validarObligatorio(precioProducto, SE_DEBE_INGRESAR_EL_PRECIO_DEL_PRODUCTO);
+        validarObligatorio(cantidad, SE_DEBE_INGRESAR_EL_CANTIDAD_DEL_PRODUCTO);
+        validarPositivo(cantidad.doubleValue(), SE_DEBE_INGRESAR_VALOR_POSITIVO);
+        validarPositivo(precioProducto, SE_DEBE_INGRESAR_VALOR_POSITIVO);
+
+        this.id = id;
+        this.cantidad = cantidad;
+        this.precioProducto = precioProducto;
+    }
+
 }

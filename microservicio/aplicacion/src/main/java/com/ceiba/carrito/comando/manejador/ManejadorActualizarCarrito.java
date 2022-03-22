@@ -25,7 +25,7 @@ public class ManejadorActualizarCarrito implements ManejadorComandoList<ComandoC
 
     @Override
     public void ejecutar(List<ComandoCarrito> comandoCarrito) {
-        List<Carrito> carritos = fabricaCarrito.crear(comandoCarrito);
+        List<Carrito> carritos = fabricaCarrito.crearActualizacion(comandoCarrito);
 
         servicioActualizarCarrito.ejecutar(carritos);
     }

@@ -27,4 +27,16 @@ public class FabricaCarrito {
         return carritos;
     }
 
+    public List<Carrito> crearActualizacion(List<ComandoCarrito> comandoCarrito) {
+        List<Carrito> carritos = new ArrayList<>();
+
+        comandoCarrito.forEach(comCar ->
+                carritos.add(new Carrito(
+                        comCar.getId(),
+                        comCar.getCantidad(),
+                        comCar.getPrecio()
+                )));
+        return carritos;
+    }
+
 }
