@@ -12,19 +12,16 @@ public class CarritoTestDataBuilder {
     private Double precioProducto;
     private Double precioTotal;
     private LocalDate fecha;
-    private String nombreCliente;
-    private String identificacion;
     private String cupon;
     private String estadoCompra;
 
     public CarritoTestDataBuilder() {
+        id = null;
         nombre = "1234";
         cantidad = 8;
         precioProducto = 31.0;
         precioTotal = 410.1;
         fecha = LocalDate.parse("2022-03-10");
-        nombreCliente = "12345";
-        identificacion = "123456789";
         cupon = null;
         estadoCompra = null;
     }
@@ -60,16 +57,6 @@ public class CarritoTestDataBuilder {
         return this;
     }
 
-    public CarritoTestDataBuilder conNombreCliente(String nombreCliente) {
-        this.nombreCliente = nombreCliente;
-        return this;
-    }
-
-    public CarritoTestDataBuilder conIdentificacion(String identificacion) {
-        this.identificacion = identificacion;
-        return this;
-    }
-
     public CarritoTestDataBuilder conCupon(String cupon) {
         this.cupon = cupon;
         return this;
@@ -83,5 +70,9 @@ public class CarritoTestDataBuilder {
     public Carrito build() {
         return new Carrito(id, nombre, cantidad, precioProducto, precioTotal,
                 fecha, cupon, estadoCompra);
+    }
+
+    public Carrito buildMenosParametros() {
+        return new Carrito(id, cantidad, precioProducto, cupon, fecha);
     }
 }

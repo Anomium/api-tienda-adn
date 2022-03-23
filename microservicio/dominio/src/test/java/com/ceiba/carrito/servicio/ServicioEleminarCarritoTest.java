@@ -19,7 +19,7 @@ class ServicioEleminarCarritoTest {
     @DisplayName("Deberia validar la existencia previa del carrito")
     void deberiaValidarLaExistenciaPreviaDelCarrito() {
         // arrange
-        Carrito carrito = new CarritoTestDataBuilder().conId(100L).build();
+//        Carrito carrito = new CarritoTestDataBuilder().conId(100L).build();
         RepositorioCarrito repositorioCarrito = Mockito.mock(RepositorioCarrito.class);
         Mockito.when(repositorioCarrito.existePorId(Mockito.anyLong())).thenReturn(false);
         ServicioEliminarProductoCarrito servicioEliminarProductoCarrito = new ServicioEliminarProductoCarrito(repositorioCarrito);

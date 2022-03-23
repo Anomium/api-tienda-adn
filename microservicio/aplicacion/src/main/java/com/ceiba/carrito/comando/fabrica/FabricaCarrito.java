@@ -4,39 +4,32 @@ import com.ceiba.carrito.comando.ComandoCarrito;
 import com.ceiba.carrito.modelo.entidad.Carrito;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDate;
 
 @Component
 public class FabricaCarrito {
 
-    public List<Carrito> crear(List<ComandoCarrito> comandoCarrito) {
-        List<Carrito> carritos = new ArrayList<>();
-
-        comandoCarrito.forEach(comCar ->
-                carritos.add(new Carrito(
-                    comCar.getId(),
-                    comCar.getNombre(),
-                    comCar.getCantidad(),
-                    comCar.getPrecio(),
-                    comCar.getPrecioTotal(),
-                    comCar.getFecha(),
-                    comCar.getCupon(),
-                    comCar.getEstadoCompra()
-        )));
-        return carritos;
+    public Carrito crear(ComandoCarrito comandoCarrito) {
+        return new Carrito(
+            comandoCarrito.getId(),
+            comandoCarrito.getNombre(),
+            comandoCarrito.getCantidad(),
+            comandoCarrito.getPrecio(),
+            comandoCarrito.getPrecioTotal(),
+            comandoCarrito.getFecha(),
+            comandoCarrito.getCupon(),
+            comandoCarrito.getEstadoCompra()
+        );
     }
 
-    public List<Carrito> crearActualizacion(List<ComandoCarrito> comandoCarrito) {
-        List<Carrito> carritos = new ArrayList<>();
-
-        comandoCarrito.forEach(comCar ->
-                carritos.add(new Carrito(
-                        comCar.getId(),
-                        comCar.getCantidad(),
-                        comCar.getPrecio()
-                )));
-        return carritos;
+    public Carrito crearActualizacion(ComandoCarrito comandoCarrito) {
+        return new Carrito(
+            comandoCarrito.getId(),
+            comandoCarrito.getCantidad(),
+            comandoCarrito.getPrecio(),
+            comandoCarrito.getCupon(),
+            LocalDate.now()
+        );
     }
 
 }

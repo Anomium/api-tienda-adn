@@ -1,6 +1,7 @@
 package com.ceiba.producto.entidad;
 
 import com.ceiba.BasePrueba;
+import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
 import com.ceiba.dominio.excepcion.ExcepcionValorObligatorio;
 import com.ceiba.producto.modelo.entidad.Producto;
 import com.ceiba.producto.servicio.testdatabuilder.ProductoTestDataBuilder;
@@ -75,6 +76,34 @@ class ProductoTest {
                     usuarioTestDataBuilder.build();
                 },
                 ExcepcionValorObligatorio.class, "Se debe ingresar la fecha de creacion del producto.");
+    }
+
+    @Test
+    @DisplayName("Deberia fallar por la cantidad")
+    void deberiaFallarPorLaCantidad() {
+
+        //Arrange
+        ProductoTestDataBuilder usuarioTestDataBuilder = new ProductoTestDataBuilder()
+                .conCantidad(0);
+        //act-assert
+        BasePrueba.assertThrows(() -> {
+                    usuarioTestDataBuilder.build();
+                },
+                ExcepcionValorInvalido.class, "Se debe ingresar la longitud minima de uno(1).");
+    }
+
+    @Test
+    @DisplayName("Deberia fallar por el precio")
+    void deberiaFallarPorElPrecio() {
+
+        //Arrange
+        ProductoTestDataBuilder usuarioTestDataBuilder = new ProductoTestDataBuilder()
+                .conPrecio(0.0);
+        //act-assert
+        BasePrueba.assertThrows(() -> {
+                    usuarioTestDataBuilder.build();
+                },
+                ExcepcionValorInvalido.class, "Se debe ingresar la longitud minima de uno(1).");
     }
 
 

@@ -32,13 +32,13 @@ public class ComandoControladorCarrito {
     @PostMapping
     @ApiOperation("Crear carrito")
     public void crear(@RequestBody ComandoCarrito comandoCarrito) {
-        menjadorCrearCarrito.ejecutar(Collections.singletonList(comandoCarrito));
+        menjadorCrearCarrito.ejecutar(comandoCarrito);
     }
 
     @PutMapping
     @ApiOperation("Actualizar carrito")
     public void actualizar(@RequestBody ComandoCarrito comandoCarrito) {
-        manejadorActualizarCarrito.ejecutar(Collections.singletonList(comandoCarrito));
+        manejadorActualizarCarrito.ejecutar(comandoCarrito);
     }
 
     @DeleteMapping("/{id}")

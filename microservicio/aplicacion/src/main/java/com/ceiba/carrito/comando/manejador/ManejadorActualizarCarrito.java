@@ -4,13 +4,11 @@ import com.ceiba.carrito.comando.ComandoCarrito;
 import com.ceiba.carrito.comando.fabrica.FabricaCarrito;
 import com.ceiba.carrito.modelo.entidad.Carrito;
 import com.ceiba.carrito.servicio.ServicioActualizarCarrito;
-import com.ceiba.manejador.ManejadorComandoList;
+import com.ceiba.manejador.ManejadorComando;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-
 @Component
-public class ManejadorActualizarCarrito implements ManejadorComandoList<ComandoCarrito> {
+public class ManejadorActualizarCarrito implements ManejadorComando<ComandoCarrito> {
 
 
 
@@ -24,10 +22,10 @@ public class ManejadorActualizarCarrito implements ManejadorComandoList<ComandoC
     }
 
     @Override
-    public void ejecutar(List<ComandoCarrito> comandoCarrito) {
-        List<Carrito> carritos = fabricaCarrito.crearActualizacion(comandoCarrito);
+    public void ejecutar(ComandoCarrito comandoCarrito) {
+        Carrito carrito = fabricaCarrito.crearActualizacion(comandoCarrito);
 
-        servicioActualizarCarrito.ejecutar(carritos);
+        servicioActualizarCarrito.ejecutar(carrito);
     }
 
 }
